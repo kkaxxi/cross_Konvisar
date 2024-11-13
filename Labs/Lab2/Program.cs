@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
 
-namespace Lab2
+namespace Labs.Lab2
 {
-    class Program
+    public class Program
     {
+        // Метод для зчитування файлів і виконання обчислень
         public static void Main()
         {
             string inputFilePath = Path.Combine("Labs", "Lab2", "Files", "INPUT.TXT");
@@ -26,8 +26,14 @@ namespace Lab2
                 C[i] = int.Parse(values[2]);
             }
 
+            int result = CalculateMinimumTime(N, A, B, C);
+            File.WriteAllText(outputFilePath, result.ToString());
+        }
+
+        // Метод обчислення мінімального часу
+        public static int CalculateMinimumTime(int N, int[] A, int[] B, int[] C)
+        {
             int[] dp = new int[N + 1];
-            
             dp[0] = 0;
 
             for (int i = 1; i <= N; i++)
@@ -45,8 +51,7 @@ namespace Lab2
                 }
             }
 
-            File.WriteAllText(outputFilePath, dp[N].ToString());
+            return dp[N];
         }
-
     }
 }
