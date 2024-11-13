@@ -11,8 +11,8 @@ namespace Labs.Lab1
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             // Задання шляху до файлів
-            string inputFilePath = Path.Combine("Labs", "Lab1", "INPUT.TXT");
-            string outputFilePath = Path.Combine("Labs", "Lab1", "OUTPUT.TXT");
+            string inputFilePath = Path.Combine("Labs", "Lab1","Files", "INPUT.TXT");
+            string outputFilePath = Path.Combine("Labs", "Lab1", "Files", "OUTPUT.TXT");
 
             // Перевірка, чи існує вхідний файл
             if (!File.Exists(inputFilePath))
