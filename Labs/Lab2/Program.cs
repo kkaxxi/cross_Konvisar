@@ -5,7 +5,6 @@ namespace Labs.Lab2
 {
     public class Program
     {
-        // Метод для зчитування файлів і виконання обчислень
         public static void Main()
         {
             string inputFilePath = Path.Combine("Labs", "Lab2", "Files", "INPUT.TXT");
@@ -30,7 +29,6 @@ namespace Labs.Lab2
             File.WriteAllText(outputFilePath, result.ToString());
         }
 
-        // Метод обчислення мінімального часу
         public static int CalculateMinimumTime(int N, int[] A, int[] B, int[] C)
         {
             int[] dp = new int[N + 1];

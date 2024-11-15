@@ -10,18 +10,15 @@ namespace Labs.Lab1
         static void Main()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            // Задання шляху до файлів
             string inputFilePath = Path.Combine("Labs", "Lab1","Files", "INPUT.TXT");
             string outputFilePath = Path.Combine("Labs", "Lab1", "Files", "OUTPUT.TXT");
 
-            // Перевірка, чи існує вхідний файл
             if (!File.Exists(inputFilePath))
             {
                 Console.WriteLine($"Помилка: Файл не знайдено за шляхом {inputFilePath}");
                 return;
             }
 
-            // Зчитування даних з файлу INPUT.TXT
             string[] inputLines;
             try
             {
@@ -33,7 +30,6 @@ namespace Labs.Lab1
                 return;
             }
 
-            // Парсинг кількості тестів
             int n;
             if (!int.TryParse(inputLines[0], out n) || n < 1)
             {
@@ -41,7 +37,6 @@ namespace Labs.Lab1
                 return;
             }
 
-            // Парсинг запитів
             List<int> queries = new List<int>();
             for (int i = 1; i <= n; i++)
             {
@@ -56,10 +51,8 @@ namespace Labs.Lab1
                 }
             }
 
-            // Генерація програшних позицій
             List<(int, int)> losingPairs = GenerateLosingPairs(queries.Max());
 
-            // Запис результату у OUTPUT.TXT
             try
             {
                 using (StreamWriter writer = new StreamWriter(outputFilePath))
