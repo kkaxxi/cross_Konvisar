@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Lab3
+namespace Labs.Lab3
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            
-            // Встановлення шляхів до файлів
+
             string inputFilePath = Path.Combine("Labs", "Lab3", "Files", "INPUT.TXT");
             string outputFilePath = Path.Combine("Labs", "Lab3", "Files", "OUTPUT.TXT");
 
+            Run(inputFilePath, outputFilePath);
+        }
+
+        public static void Run(string inputFilePath, string outputFilePath)
+        {
             try
             {
                 string[] input = File.ReadAllLines(inputFilePath);
@@ -35,7 +39,7 @@ namespace Lab3
                 }
 
                 bool[,] used = new bool[n, m];
-                int[] ships = new int[3];
+                int[] ships = new int[3]; // [цілі, пошкоджені, знищені]
                 List<(int, int)> stack = new List<(int, int)>();
 
                 for (int i = 0; i < n; i++)
@@ -68,15 +72,18 @@ namespace Lab3
                                 }
                             }
 
-                            if (nX == 0) ships[0]++;
-                            else if (nS == 0) ships[2]++;
-                            else ships[1]++;
+                            // Класифікація корабля
+                            if (nS > 0 && nX == 0)
+                                ships[0]++; // Цілий корабель
+                            else if (nX > 0 && nS == 0)
+                                ships[2]++; // Знищений корабель
+                            else if (nS > 0 && nX > 0)
+                                ships[1]++; // Пошкоджений корабель
                         }
                     }
                 }
 
                 Console.WriteLine($"Результати: Цілих кораблів - {ships[0]}, Пошкоджених - {ships[1]}, Знищених - {ships[2]}.");
-
                 File.WriteAllText(outputFilePath, $"{ships[0]} {ships[1]} {ships[2]}");
                 Console.WriteLine($"Результати успішно записані у {outputFilePath}.");
             }
@@ -84,7 +91,8 @@ namespace Lab3
             {
                 Console.WriteLine($"Помилка: Вхідний файл не знайдено за шляхом {inputFilePath}. {ex.Message}");
             }
-           
         }
+
+
     }
 }
