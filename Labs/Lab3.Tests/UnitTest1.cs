@@ -1,7 +1,10 @@
 using System;
 using System.IO;
 using Xunit;
-using Labs.Lab3; 
+using Labs.Lab3;
+using Lab3Library;
+
+
 
 namespace Labs.Lab3.Tests
 {
@@ -97,7 +100,7 @@ XXS--
                 File.WriteAllText(inputFilePath, inputContent);
 
                 // Виклик програми
-                Labs.Lab3.Program.Run(inputFilePath, outputFilePath);
+                FieldAnalyzer.Analyze(inputFilePath, outputFilePath);
 
                 // Читання результату
                 string actualOutput = File.ReadAllText(outputFilePath).Trim();

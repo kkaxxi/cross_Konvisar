@@ -1,5 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\Lab3Library\Lab3Library.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="KKonvisar" Version="1.0.0" />
+  </ItemGroup>
+
+
   <PropertyGroup Label="Globals">
     <ProjectGuid>57bc1a1e-447b-4fc2-837a-edfb3143977e</ProjectGuid>
   </PropertyGroup>
