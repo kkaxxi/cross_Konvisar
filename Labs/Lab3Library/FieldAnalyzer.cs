@@ -4,19 +4,19 @@ using System.IO;
 
 namespace Lab3Library
 {
- public class FieldAnalyzer
+    public class FieldAnalyzer
     {
         public static (int intact, int damaged, int destroyed) Analyze(string inputFilePath, string outputFilePath)
         {
             try
             {
                 string[] input = File.ReadAllLines(inputFilePath);
-                Console.WriteLine($"Вхідний файл успішно зчитано з {inputFilePath}.");
+                Console.WriteLine($"Input file successfully read from {inputFilePath}.");
 
                 string[] dimensions = input[0].Split(' ');
                 int n = int.Parse(dimensions[0]);
                 int m = int.Parse(dimensions[1]);
-                Console.WriteLine($"Розміри поля: {n} x {m}.");
+                Console.WriteLine($"Field dimensions: {n} x {m}.");
 
                 char[,] arr = new char[n, m];
                 for (int i = 0; i < n; i++)
@@ -72,15 +72,15 @@ namespace Lab3Library
                     }
                 }
 
-                Console.WriteLine($"Результати: Цілих кораблів - {ships[0]}, Пошкоджених - {ships[1]}, Знищених - {ships[2]}.");
+                Console.WriteLine($"Results: Intact ships - {ships[0]}, Damaged ships - {ships[1]}, Destroyed ships - {ships[2]}.");
                 File.WriteAllText(outputFilePath, $"{ships[0]} {ships[1]} {ships[2]}");
-                Console.WriteLine($"Результати успішно записані у {outputFilePath}.");
+                Console.WriteLine($"Results successfully written to {outputFilePath}.");
 
                 return (ships[0], ships[1], ships[2]);
             }
             catch (FileNotFoundException ex)
             {
-                Console.WriteLine($"Помилка: Вхідний файл не знайдено за шляхом {inputFilePath}. {ex.Message}");
+                Console.WriteLine($"Error: Input file not found at {inputFilePath}. {ex.Message}");
                 throw;
             }
         }

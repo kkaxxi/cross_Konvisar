@@ -10,12 +10,12 @@ namespace Labs.Lab1
         static void Main()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            string inputFilePath = Path.Combine("Labs", "Lab1","Files", "INPUT.TXT");
+            string inputFilePath = Path.Combine("Labs", "Lab1", "Files", "INPUT.TXT");
             string outputFilePath = Path.Combine("Labs", "Lab1", "Files", "OUTPUT.TXT");
 
             if (!File.Exists(inputFilePath))
             {
-                Console.WriteLine($"Помилка: Файл не знайдено за шляхом {inputFilePath}");
+                Console.WriteLine($"Error: File not found at path {inputFilePath}");
                 return;
             }
 
@@ -26,14 +26,14 @@ namespace Labs.Lab1
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Помилка при читанні файлу: {ex.Message}");
+                Console.WriteLine($"Error while reading the file: {ex.Message}");
                 return;
             }
 
             int n;
             if (!int.TryParse(inputLines[0], out n) || n < 1)
             {
-                Console.WriteLine("Помилка: Некоректне значення кількості тестів у першому рядку.");
+                Console.WriteLine("Error: Invalid number of tests in the first line.");
                 return;
             }
 
@@ -46,7 +46,7 @@ namespace Labs.Lab1
                 }
                 else
                 {
-                    Console.WriteLine($"Помилка: Некоректне значення в рядку {i + 1} файлу INPUT.TXT.");
+                    Console.WriteLine($"Error: Invalid value in line {i + 1} of the file INPUT.TXT.");
                     return;
                 }
             }
@@ -63,18 +63,18 @@ namespace Labs.Lab1
                         writer.WriteLine($"{a} {b}");
                     }
                 }
-                Console.WriteLine($"Результати успішно записані у {outputFilePath}");
+                Console.WriteLine($"Results successfully written to {outputFilePath}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Помилка при записі у файл OUTPUT.TXT: {ex.Message}");
+                Console.WriteLine($"Error while writing to OUTPUT.TXT: {ex.Message}");
             }
         }
 
         public static List<(int, int)> GenerateLosingPairs(int maxK)
         {
             if (maxK < 0)
-                throw new ArgumentOutOfRangeException(nameof(maxK), "Значення не може бути від'ємним");
+                throw new ArgumentOutOfRangeException(nameof(maxK), "Value cannot be negative.");
 
             List<(int, int)> losingPairs = new List<(int, int)>();
             double phi = (1 + Math.Sqrt(5)) / 2;
