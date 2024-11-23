@@ -155,6 +155,11 @@ coverage*.info
 *.coverage
 *.coveragexml
 
+.vagrant/
+*.private_key
+*.rb
+
+
 # NCrunch
 _NCrunch_*
 .*crunch*.local.xml

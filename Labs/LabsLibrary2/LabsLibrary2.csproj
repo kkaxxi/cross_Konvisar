@@ -1,11 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-   <PropertyGroup Label="Globals">
-    <ProjectGuid>c950c1b7-7dd4-480f-ac22-c7c33d2c91d5</ProjectGuid>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>8ced72f7-2a1e-4e06-a370-eb409fa504a4</ProjectGuid>
   </PropertyGroup>
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>

@@ -10,8 +10,8 @@ namespace Labs.Lab3
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            string inputFilePath = Path.Combine("Labs", "Lab3", "Files", "INPUT.TXT");
-            string outputFilePath = Path.Combine("Labs", "Lab3", "Files", "OUTPUT.TXT");
+            string inputFilePath = Path.Combine("Labs", "Lab3",  "INPUT.TXT");
+            string outputFilePath = Path.Combine("Labs", "Lab3", "OUTPUT.TXT");
 
             var result = FieldAnalyzer.Analyze(inputFilePath, outputFilePath);
 

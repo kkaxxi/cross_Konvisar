@@ -7,11 +7,11 @@ namespace Labs.Lab1
 {
     public class Program
     {
-        static void Main()
+        public static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            string inputFilePath = Path.Combine("Labs", "Lab1", "Files", "INPUT.TXT");
-            string outputFilePath = Path.Combine("Labs", "Lab1", "Files", "OUTPUT.TXT");
+            string inputFilePath = Path.Combine("Labs", "Lab1", "INPUT.TXT");
+            string outputFilePath = Path.Combine("Labs", "Lab1", "OUTPUT.TXT");
 
             if (!File.Exists(inputFilePath))
             {
