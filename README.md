@@ -26,3 +26,5 @@ dotnet build Build.proj -p:Solution=Lab1 -t:Test
 - **Lab3, Lab3.Test**
 
 - **Lab4**
+
+- **Lab5**
