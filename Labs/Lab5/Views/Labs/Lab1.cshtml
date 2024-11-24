@@ -1,0 +1,112 @@
+@{
+    ViewData["Title"] = "Lab1";
+}
+
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f5f6fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #333333;
+        margin-bottom: 20px;
+    }
+
+    p {
+        color: #555555;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .form-label {
+        font-weight: bold;
+        color: #333333;
+    }
+
+    .form-control {
+        border-radius: 6px;
+        border: 1px solid #dddddd;
+        padding: 10px;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .form-control:focus {
+        border-color: #6a11cb;
+        box-shadow: 0 0 4px rgba(106, 17, 203, 0.5);
+        outline: none;
+    }
+
+    button {
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+    }
+
+    button:hover {
+        background: linear-gradient(90deg, #2575fc, #6a11cb);
+    }
+
+    textarea {
+        margin-top: 15px;
+        border-radius: 6px;
+        border: 1px solid #dddddd;
+        padding: 10px;
+        font-size: 14px;
+        resize: none;
+        width: 100%;
+    }
+</style>
+
+<div class="container">
+    <h2>Лабораторна робота 1 - Варіант 30</h2>
+    <p>
+        <b>Завдання:</b> У стародавньому Китаї було вигадано безліч цікавих ігор. Усі знають дуже відому гру «Majong». У цьому завданні ми розглянемо іншу цікаву китайську гру Цзяньшидзи. 
+        Коротко сформулюємо правила гри:
+    </p>
+    <ul>
+        <li>З двох куп каміння, двоє граючих по черзі можуть брати:</li>
+        <ul>
+            <li>Довільне ненульове число каменів із однієї купи.</li>
+            <li>Одночасно за однаковим довільним ненульовим числом каменів з обох куп.</li>
+        </ul>
+        <li>Виграє той, хто візьме своїм ходом останній камінь.</li>
+    </ul>
+    <p>
+        Не складно визначити у яких випадках виграє перший, а в яких другий гравець. Завдання зводиться до знаходження так званих програшних пар (ai, bi), що означають, що при купах каменів, що містять ai і bi каменів, програє той, хто в даний момент здійснює свій хід.
+    </p>
+    <p>
+        <b>Вхідні дані:</b> У першому рядку вхідного файлу <code>INPUT.TXT</code> знаходиться число N, (1 ≤ N ≤ 1000) – кількість тестів у файлі. У наступних N рядках містяться числа ki, (0 ≤ ki ≤ 10<sup>9</sup>) порядковий номер пари програшних куп, яку потрібно знайти.
+    </p>
+    <p>
+        <b>Вихідні дані:</b> У вихідний файл <code>OUTPUT.TXT</code> виведіть N пар чисел (aki, bki) по одному у кожному рядку.
+    </p>
+
+    <form method="post" enctype="multipart/form-data" action="@Url.Action("Lab1", "Labs")">
+        <label for="inputFile" class="form-label">Завантажити вхідний файл:</label>
+        <input type="file" class="form-control" id="inputFile" name="inputFile" required>
+        <br />
+        <button type="submit">Обчислити</button>
+    </form>
+
+    <label class="form-label">Результат:</label>
+    <textarea class="form-control" id="outputContent" rows="4" readonly>@ViewBag.Result</textarea>
+</div>

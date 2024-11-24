@@ -1,3 +1,8 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Auth0.AspNetCore.Authentication;
+
+using Lab5.Services;
 namespace Lab5;
 
 public class Program
@@ -8,6 +13,15 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+        builder.Services.AddScoped<Auth0UserService>(); 
+        builder.Services.AddAuthentication("AuthScheme")
+            .AddCookie("AuthScheme", options =>
+            {
+                options.LoginPath = "/Account/Login";
+                options.ExpireTimeSpan = TimeSpan.FromHours(1);
+            });
+
+        builder.Services.AddAuthorization();
 
         var app = builder.Build();
 
@@ -24,6 +38,7 @@ public class Program
 
         app.UseRouting();
 
+        app.UseAuthentication();
         app.UseAuthorization();
 
         app.MapControllerRoute(

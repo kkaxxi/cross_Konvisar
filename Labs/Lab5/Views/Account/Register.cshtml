@@ -1,0 +1,119 @@
+@model Lab5.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f9fafb;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333333;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+        color: #555555;
+    }
+
+    input {
+        border: 1px solid #dddddd;
+        border-radius: 6px;
+        padding: 10px;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #6a11cb;
+        box-shadow: 0 0 4px rgba(106, 17, 203, 0.5);
+    }
+
+    .btn-primary {
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        color: #ffffff;
+        font-size: 16px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        width: 100%;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(90deg, #2575fc, #6a11cb);
+    }
+
+    .text-danger {
+        font-size: 12px;
+    }
+
+    .text-danger::before {
+        content: '* ';
+        color: #e3342f;
+    }
+</style>
+
+<div class="container">
+    <h2>Registration</h2>
+    <form asp-action="Register" method="post">
+        <div class="form-group">
+            <label asp-for="UserName" class="control-label">Username</label>
+            <input asp-for="UserName" class="form-control" placeholder="Enter your username" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="FullName" class="control-label">Full Name</label>
+            <input asp-for="FullName" class="form-control" placeholder="Enter your full name" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Phone" class="control-label">Phone</label>
+            <input asp-for="Phone" class="form-control" placeholder="Enter your phone number" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label">Email</label>
+            <input asp-for="Email" class="form-control" placeholder="Enter your email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label">Password</label>
+            <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword" class="control-label">Confirm Password</label>
+            <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm your password" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+        <div asp-validation-summary="ModelOnly" class="text-danger mt-3"></div>
+    </form>
+</div>
+
+@section Scripts {
+    @Html.PartialAsync("_ValidationScriptsPartial")
+}

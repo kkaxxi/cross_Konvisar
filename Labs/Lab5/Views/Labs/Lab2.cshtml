@@ -1,0 +1,114 @@
+@{
+    ViewData["Title"] = "Lab2";
+}
+
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f9fafb;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #333333;
+        margin-bottom: 20px;
+    }
+
+    p {
+        color: #555555;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    ul {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+
+    .form-label {
+        font-weight: bold;
+        color: #333333;
+    }
+
+    .form-control {
+        border-radius: 6px;
+        border: 1px solid #dddddd;
+        padding: 10px;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .form-control:focus {
+        border-color: #6a11cb;
+        box-shadow: 0 0 4px rgba(106, 17, 203, 0.5);
+        outline: none;
+    }
+
+    button {
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+    }
+
+    button:hover {
+        background: linear-gradient(90deg, #2575fc, #6a11cb);
+    }
+
+    textarea {
+        margin-top: 15px;
+        border-radius: 6px;
+        border: 1px solid #dddddd;
+        padding: 10px;
+        font-size: 14px;
+        resize: none;
+        width: 100%;
+    }
+</style>
+
+<div class="container">
+    <h2>Лабораторна робота 2 - Варіант 30</h2>
+    <p>
+        <b>Завдання:</b> За квитками на прем'єру нового мюзиклу вишикувалася черга з N осіб, кожен із яких хоче купити 1 квиток. 
+        На всю чергу працювала лише одна каса, тому продаж квитків йшов дуже повільно, наводячи «постояльців» черги у відчай. 
+        Найкмітливіші швидко помітили, що, як правило, кілька квитків в одні руки касир продає швидше, ніж коли ці квитки продаються по одному. 
+        Тому вони запропонували кільком людям, які стоять поряд, віддавати гроші першому з них, щоб він купив квитки на всіх.
+    </p>
+    <ul>
+        <li>Касир продавала не більше 3-х квитків в одні руки.</li>
+        <li>Домовитися між собою могли лише 2 або 3 особи, що стояли поспіль.</li>
+        <li>На продаж i-й людині з черги одного квитка касир витрачає <code>Ai</code> секунд, на продаж двох квитків – <code>Bi</code> секунд, трьох квитків – <code>Ci</code> секунд.</li>
+    </ul>
+    <p>
+        <b>Вхідні дані:</b> У вхідному файлі <code>INPUT.TXT</code> записано спочатку число N — кількість покупців у черзі (1≤N≤5000). 
+        Далі йде N трійок натуральних чисел <code>Ai, Bi, Ci</code>. Кожен із цих чисел не перевищує 3600.
+    </p>
+    <p>
+        <b>Вихідні дані:</b> У вихідний файл <code>OUTPUT.TXT</code> виведіть одне число - мінімальний час у секундах, за який могли обслуговувати всі покупці.
+    </p>
+
+    <form method="post" enctype="multipart/form-data" action="@Url.Action("Lab2", "Labs")">
+        <label for="inputFile" class="form-label">Завантажити вхідний файл:</label>
+        <input type="file" class="form-control" id="inputFile" name="inputFile" required>
+        <br />
+        <button type="submit">Обчислити</button>
+    </form>
+
+    <label class="form-label">Результат:</label>
+    <textarea class="form-control" id="outputContent" rows="4" readonly>@ViewBag.Result</textarea>
+</div>

@@ -1,0 +1,93 @@
+@model Lab5.Models.ProfileViewModel
+@{
+    ViewData["Title"] = "User Profile";
+}
+
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f6fa;
+    }
+
+    .profile-container {
+        max-width: 800px;
+        margin: 40px auto;
+        background-color: #ffffff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .profile-header {
+        height: 120px;
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-header h2 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .profile-content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-details {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .info-item {
+        font-size: 14px;
+        color: #333333;
+    }
+
+    .info-item strong {
+        color: #000000;
+    }
+
+    .logout-button {
+        margin-top: 20px;
+        padding: 10px 30px;
+        font-size: 14px;
+        color: #ffffff;
+        background: linear-gradient(90deg, #2575fc, #6a11cb);
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+    }
+
+    .logout-button:hover {
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+    }
+</style>
+
+<div class="profile-container">
+    <div class="profile-header">
+        <h2>@Model.FullName's Profile</h2>
+    </div>
+    <div class="profile-content">
+        <div class="profile-details">
+            <p class="info-item"><strong>Full Name:</strong> @Model.FullName</p>
+            <p class="info-item"><strong>Username:</strong> @Model.UserName</p>
+            <p class="info-item"><strong>Email:</strong> @Model.Email</p>
+            <p class="info-item"><strong>Phone:</strong> @Model.Phone</p>
+        </div>
+        <form asp-controller="Account" asp-action="Logout" method="post">
+            <button type="submit" class="logout-button">Log Out</button>
+        </form>
+    </div>
+</div>

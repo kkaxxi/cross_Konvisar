@@ -1,0 +1,119 @@
+@{
+    ViewData["Title"] = "Lab3";
+}
+
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f9fafb;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #333333;
+        margin-bottom: 20px;
+    }
+
+    p {
+        color: #555555;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    ul {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+
+    .form-label {
+        font-weight: bold;
+        color: #333333;
+    }
+
+    .form-control {
+        border-radius: 6px;
+        border: 1px solid #dddddd;
+        padding: 10px;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .form-control:focus {
+        border-color: #6a11cb;
+        box-shadow: 0 0 4px rgba(106, 17, 203, 0.5);
+        outline: none;
+    }
+
+    button {
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+    }
+
+    button:hover {
+        background: linear-gradient(90deg, #2575fc, #6a11cb);
+    }
+
+    textarea {
+        margin-top: 15px;
+        border-radius: 6px;
+        border: 1px solid #dddddd;
+        padding: 10px;
+        font-size: 14px;
+        resize: none;
+        width: 100%;
+    }
+</style>
+
+<div class="container">
+    <h2>Лабораторна робота 3 - Варіант 30</h2>
+    <p>
+        <b>Завдання:</b> Всім відома захоплююча гра "Морський бій". Зараз грати у морський бій можна не лише із сусідом по парті, а й із комп'ютером. 
+        Гра з комп'ютером ведеться на прямокутному полі довільних розмірів <code>N×M</code>, де <code>N</code> - кількість рядків, <code>M</code> - кількість стовпців. 
+        Наближається чемпіонат світу з морського бою. Планується вести його трансляцію в режимі реального часу: демонструвати карту з кораблями та виводити статистику: 
+        кількість цілих, підбитих та знищених кораблів, що знаходяться на полі. Потрібно написати програму для підрахунку статистики.
+    </p>
+    <ul>
+        <li>Корабель на полі - це пов'язана фігура, що складається з однієї або декількох клітин, що лежать поруч, що мають спільну сторону.</li>
+        <li>Кораблі можуть бути абсолютно будь-яких форм та розмірів!</li>
+    </ul>
+    <p>
+        <b>Вхідні дані:</b> Перший рядок вхідного файлу <code>INPUT.TXT</code> містить два цілих числа <code>N</code> і <code>M</code> (1 ≤ <code>N</code>, <code>M</code> ≤ 10<sup>3</sup>), 
+        розділених пробілами - розміри ігрового поля. Далі йдуть <code>N</code> рядків по <code>M</code> символів – опис ігрового поля. Англійська літера <code>'X'</code> позначає підбиту клітину корабля, 
+        <code>'S'</code> - не підбиту клітину корабля, <code>'-'</code> – вільний водний простір.
+    </p>
+    <p>
+        <b>Вихідні дані:</b> У вихідний файл <code>OUTPUT.TXT</code> виведіть через пропуск три числа:
+        <ul>
+            <li>Кількість цілих кораблів</li>
+            <li>Кількість підбитих кораблів</li>
+            <li>Кількість знищених кораблів</li>
+        </ul>
+    </p>
+
+    <form method="post" enctype="multipart/form-data" action="@Url.Action("Lab3", "Labs")">
+        <label for="inputFile" class="form-label">Завантажити вхідний файл:</label>
+        <input type="file" class="form-control" id="inputFile" name="inputFile" required>
+        <br />
+        <button type="submit">Обчислити</button>
+    </form>
+
+    <label class="form-label">Результат:</label>
+    <textarea class="form-control" id="outputContent" rows="4" readonly>@ViewBag.Result</textarea>
+</div>
